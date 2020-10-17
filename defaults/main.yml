@@ -1,0 +1,4 @@
+---
+service_name: zabbix-jgw-docker
+uninstall_service: false
+docker_image: zabbix/zabbix-java-gateway:latest

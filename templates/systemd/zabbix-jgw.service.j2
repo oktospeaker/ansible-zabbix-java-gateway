@@ -1,0 +1,17 @@
+[Unit]
+Description=Zabbix java gateway docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker rm {{ service_name }}
+ExecStart=/usr/bin/docker run \
+        --rm \
+        --name {{ service_name }} \
+        -t \
+        {{ docker_image }}
+ExecStop=/usr/bin/docker stop -t 1 {{ service_name }}
+
+[Install]
+WantedBy=multi-user.target
